@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<input id="sasha1" type="button" value="click1"/>
+<a id="sasha2" href="javascript:void(0);">轻抚我</a>
+<script type="text/javascript">
+var sasha1 = document.getElementById("sasha1");
+var sasha2 = document.getElementById("sasha2");
+var ck = function(){alert("哈哈哈 擦擦擦");}
+addEvent(sasha1,"click",ck,false);
+addEvent(sasha2,"mouseover",ck,false);
+
+//addEvent
+function addEvent(el,type,fn,useCapture){
+	if(el.attachEvent){
+		return el.attachEvent("on"+type,fn);	
+	} else if(el.addEventListener){
+		return el.addEventListener(type,fn,useCapture);
+	} else{
+		el["on"+type] = fn;
+	}
+}
+//removeEvent
+function removeEvent(el,type,fn,useCapture){
+	if(el.detachEvent){
+		return el.detachEvent("on"+type,fn);	
+	} else if(el.removeEventListener){
+		return el.removeEventListener(type,fn,useCapture);
+	} 
+	return false;
+}
+</script>
+</body>
+</html>
